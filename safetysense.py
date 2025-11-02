@@ -1,7 +1,9 @@
+# Cautions : Kode dijalankan secara bertahap agar model bisa membaca dataset.
+
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split # Sudah ada di Scikit-learn
-from sklearn.ensemble import RandomForestClassifier # Algoritma yang kamu pilih
+from sklearn.model_selection import train_test_split 
+from sklearn.ensemble import RandomForestClassifier 
 from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -13,8 +15,7 @@ path = "E:/UCI HAR Dataset/UCI HAR Dataset/"
 X_train = pd.read_csv(path + 'train/X_train.txt', sep='\s+', header=None)
 X_test = pd.read_csv(path + 'test/X_test.txt', sep='\s+', header=None)
 
-# 3. Muat Data Label (y)
-# Label biasanya hanya 1 kolom
+# load data label y
 y_train = pd.read_csv(path + 'train/y_train.txt', sep='\s+', header=None)
 y_test = pd.read_csv(path + 'test/y_test.txt', sep='\s+', header=None)
 
@@ -32,6 +33,7 @@ keywords = ['mean()', 'std()', 'gravity']
 # Filter nama fitur: pilih kolom yang mengandung salah satu keyword di atas
 fitur_terpilih = [col for col in X_train.columns if any(keyword in col for keyword in keywords)]
 
+# Feature selection
 # Jumlah fitur setelah reduksi (seharusnya berkurang drastis dari 561)
 print(f"Jumlah Fitur Awal: 561")
 print(f"Jumlah Fitur Setelah Reduksi: {len(fitur_terpilih)}")
@@ -57,5 +59,6 @@ y_pred_reduced = model_reduced.predict(X_test_reduced)
 akurasi_reduced = accuracy_score(y_test, y_pred_reduced)
 
 print(f"\nAkurasi Prediksi dengan Fitur yang Diringankan: {akurasi_reduced*100:.2f}%")
+
 
 
