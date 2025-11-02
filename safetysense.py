@@ -9,7 +9,7 @@ import seaborn as sns
 # path dataset
 path = "E:/UCI HAR Dataset/UCI HAR Dataset/"
 
-# 2. Muat Data Fitur (X)
+# load data fitur x
 X_train = pd.read_csv(path + 'train/X_train.txt', sep='\s+', header=None)
 X_test = pd.read_csv(path + 'test/X_test.txt', sep='\s+', header=None)
 
@@ -57,4 +57,5 @@ y_pred_reduced = model_reduced.predict(X_test_reduced)
 akurasi_reduced = accuracy_score(y_test, y_pred_reduced)
 
 print(f"\nAkurasi Prediksi dengan Fitur yang Diringankan: {akurasi_reduced*100:.2f}%")
+
 
