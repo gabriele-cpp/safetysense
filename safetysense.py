@@ -8,7 +8,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# path dataset
+# path dataset (bervariasi tergantung lokasi dataset di local computer)
 path = "E:/UCI HAR Dataset/UCI HAR Dataset/"
 
 # load data fitur x
@@ -59,6 +59,7 @@ y_pred_reduced = model_reduced.predict(X_test_reduced)
 akurasi_reduced = accuracy_score(y_test, y_pred_reduced)
 
 print(f"\nAkurasi Prediksi dengan Fitur yang Diringankan: {akurasi_reduced*100:.2f}%")
+
 
 
 
